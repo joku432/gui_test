@@ -1,5 +1,5 @@
-#ifndef ADC_PROJECT_H_
-#define ADC_PROJECT_H_
+#ifndef GUI_H_
+#define GUI_H_
 
 #include <stdint.h>
 
@@ -22,8 +22,10 @@ typedef struct gui {
 } gui_t;
 
 int8_t gui_init(gui_t *gui, uint16_t W, uint16_t H);
+void gui_set_callbacks(void);
 int8_t gui_update_adc_value(gui_t *gui, uint32_t value);
 int8_t gui_set_adc_value_treshold(gui_t *gui, uint32_t value);
+int32_t gui_get_adc_value_treshold(gui_t* gui);
 
 
 #endif

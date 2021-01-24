@@ -1,5 +1,5 @@
-#include "adc_project.h"
-#include <lvgl/lvgl.h>
+#include "gui.h"
+#include "lvgl.h"
 
 
 
@@ -20,8 +20,14 @@ int8_t gui_init(gui_t* gui, uint16_t W, uint16_t H)
 	lv_label_set_text(gui->value_label, "0");
 	lv_obj_align(gui->value_label, gui->line_meter, LV_ALIGN_CENTER, -5, 0);
 	
+	gui_set_callbacks();
 
 	return GUI_SUCCESS;
+}
+
+void gui_set_callbacks(void)
+{
+
 }
 
 int8_t gui_update_adc_value(gui_t* gui, uint32_t value)
@@ -43,4 +49,9 @@ int8_t gui_set_adc_value_treshold(gui_t* gui, uint32_t value)
 	gui->adc_value_treshold = value;
 	
 	return GUI_SUCCESS;
+}
+
+int32_t gui_get_adc_value_treshold(gui_t* gui)
+{
+	return gui->adc_value_treshold;
 }
