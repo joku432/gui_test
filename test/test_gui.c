@@ -23,18 +23,27 @@ void test_gui_update_adc_value_ok_value(void)
 	lv_label_set_text_fmt_IgnoreArg_label();
 	lv_linemeter_set_value_Expect(NULL, value);
 	lv_linemeter_set_value_IgnoreArg_lmeter();
-    int8_t retval = gui_update_adc_value(&gui, value);
+
+	int8_t retval = gui_update_adc_value(&gui, value);
 	TEST_ASSERT_EQUAL_INT8(0, retval);
 }
 
-void gui_set_adc_value_treshold_ok_value(void)
+void test_gui_update_adc_value_too_high(void)
+{
+    const uint32_t value = 4907;
+	int8_t retval = gui_update_adc_value(&gui, value);
+	TEST_ASSERT_EQUAL_INT8(-1, retval);
+}
+
+
+void test_gui_set_adc_value_treshold_ok_value(void)
 {
 	const uint32_t value = 1500;
     int8_t retval = gui_set_adc_value_treshold(&gui, value);
 	TEST_ASSERT_EQUAL_INT8(0, retval);
 }
 
-void gui_get_adc_value_treshold_returns_correct_value(void)
+void test_gui_get_adc_value_treshold_returns_correct_value(void)
 {
 	int8_t retval = gui_set_adc_value_treshold(&gui, 3456);
 	TEST_ASSERT_EQUAL_INT8(0, retval);
